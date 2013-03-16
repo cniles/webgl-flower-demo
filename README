@@ -1,0 +1,16 @@
+WebGLTK
+-------
+
+This is a WebGL game development toolkit in the making.  It will provide the
+following functionality to facilitate game development using WebGL:
+
+-Core game loop & timing
+-Easy GL shader definition/loading/activation
+-Game asset loading
+
+Who knows where it's going to go.  Right now, it's just a framework for
+creation of my own games.
+
+Contact
+-------
+Owner: Craig Niles, niles.c@gmail.com
