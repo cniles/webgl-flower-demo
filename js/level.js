@@ -1,9 +1,9 @@
 function parseNumList(listString) {
-    numStrings = listString.split(/[\s]+/);
-    nums = new Array();
-    count = 0;
+    var numStrings = listString.split(/[\s]+/);
+    var nums = new Array();
+    var count = 0;
     for(var i = 0; i < numStrings.length; i++) {
-	str = numStrings[i];
+	var str = numStrings[i];
 	if(str != "") {
 	    nums[count++] = parseFloat(str);
 	}
@@ -28,6 +28,7 @@ function createGeometry(geometryNode) {
 }
 
 function getLevel(name) {
+    var xmlhttp;
     if(window.XMLHttpRequest) {
 	//IE7+, Firefox, Chrome, Opera, Safari
 	xmlhttp=new XMLHttpRequest();
@@ -39,16 +40,16 @@ function getLevel(name) {
     xmlhttp.open("GET", name, false);
     xmlhttp.send();
 
-    lvl = xmlhttp.responseXML;
+    var lvl = xmlhttp.responseXML;
     
     if(lvl != null) {
-	geometryNodeList = lvl.getElementsByTagName("geometry");
+	var geometryNodeList = lvl.getElementsByTagName("geometry");
 	lvl.geometryCount = geometryNodeList.length;
 	lvl.geometryList = new Array();
 
 	for(var i = 0; i < lvl.geometryCount; ++i) {
-	    newGeo = createGeometry(geometryNodeList[i]);
-	    if(newGeo) lvl.geometryList[i] = newGeo;
+	    var newGeometry = createGeometry(geometryNodeList[i]);
+	    if(newGeometry) lvl.geometryList[i] = newGeometry;
 	}
 	
 	lvl.getGeometry = function(idx) {

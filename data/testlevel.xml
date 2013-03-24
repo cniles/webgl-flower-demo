@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<level>
+<level version="0.01">
   <geometry>
     <renderlist>
       <render>
