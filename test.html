@@ -8,8 +8,26 @@
   <body>
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
-    <script src="./js/qunit.js"></script>
-    <script src="./js/level.js"></script>
+    <div id="webgl-canvas">
+      <center>
+	<h3>Test Canvas</h3>
+	<canvas id="canvas" width="320" height="200" style="border:5px solid #2b81af;">
+	  Your browser does not support the HTML5 canvas tag.
+	</canvas>
+      </center
+    </div>
+
+    <!-- Load libraries -->
+    <script type="text/javascript" src="./js/qunit.js"></script>
+    <script type="text/javascript" src="./js/level.js"></script>
+    <script type="text/javascript" src="./js/webgl-utils.js"></script>
+    <script type="text/javascript" src="./js/webgl-shader.js"></script>
+    <script type="text/javascript" src="./js/J3DIMath.js"></script>
+    <script type="text/javascript" src="./js/glmain.js"></script>
+
+    <!-- Load shader definitions -->
+    <script type="text/javascript" src="glsl/plainColor.js"></script>
+
     <script src="./js/test.js"></script>
   </body>
 </html>

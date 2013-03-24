@@ -1,4 +1,6 @@
-var simpleShader = {
+var plainColor = {
+    
+    name: "plain-color",
 
     uniforms : {},
 
@@ -36,4 +38,3 @@ var simpleShader = {
     ].join('\n')
 
 };
-

@@ -36,7 +36,7 @@ function initBuffers() {
 }
 
 function initShader() {
-    program = createShaderProgram(simpleShader);
+    program = createShaderProgram(plainShader);
     if(!program) {
 	console.log("There was a problem creating the shader program! Bailing!");
 	return;

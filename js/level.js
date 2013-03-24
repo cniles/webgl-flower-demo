@@ -11,18 +11,16 @@ function parseNumList(listString) {
     return nums;
 }
 
-function createVertexArray(geometryNode) {
-    return parseNumList(geometryNode.getElementsByTagName("vertexList")[0].childNodes[0].nodeValue);
-}
-
-function createColorArray(geometryNode) {
-    return parseNumList(geometryNode.getElementsByTagName("colorList")[0].childNodes[0].nodeValue);
+function createArrayFromNode(node) {
+    var arr = parseNumList(node.childNodes[0].nodeValue);
+    arr.dimension = node.getAttribute("r");
+    return arr;
 }
 
 function createGeometry(geometryNode) {
     var geometry = {
-	vertices: createVertexArray(geometryNode),
-	colors: createColorArray(geometryNode)
+	vertices: createArrayFromNode(geometryNode.getElementsByTagName("vertexList")[0]),
+	colors: createArrayFromNode(geometryNode.getElementsByTagName("colorList")[0])
     }
     return geometry;
 }

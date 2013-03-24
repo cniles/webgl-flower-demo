@@ -1,3 +1,5 @@
+var shaderDictionary = {};
+
 function getType(type) {
     if(type == 'f') return gl.FLOAT;
 }
@@ -45,6 +47,8 @@ function createShaderProgram(shaderObj) {
 	    gl.vertexAttribPointer(attribute.location, attribute.size, getType(attribute.type), false, 0, 0);
 	}
     }
+
+    shaderDictionary[shaderObj.name] = shaderObj;
 
     return program;
 }
