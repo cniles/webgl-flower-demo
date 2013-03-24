@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<level>
+  <geometry>
+    <renderlist>
+      <render>
+	<type>plain-color</type>
+      </render>
+
+      <primitive>triangles</primitive>
+
+      <vertexList r="2">
+	0.5 0.8
+	0.8 -0.8
+	-0.8 -0.8
+      </vertexList>
+
+      <colorList r="3">
+	1.0 0.0 0.0
+	0.0 1.0 0.0
+	0.0 0.0 1.0
+      </colorList>
+
+    </renderlist>
+    
+  </geometry>
+
+  <geometry>
+    <renderlist>
+      <render>
+	<type>plain-color</type>
+      </render>
+
+      <primitive>triangles</primitive>
+
+      <vertexList r="2">
+	0.1 0.8
+	0.9 -0.8
+	-0.8 -0.8
+      </vertexList>
+
+      <colorList r="3">
+	1.0 0.0 0.0
+	0.0 1.0 0.0
+	0.0 0.0 1.0
+      </colorList>
+
+    </renderlist>
+    
+  </geometry>
+
+</level>
