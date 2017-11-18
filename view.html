@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html>
   
-  <head><meta charset="utf-8"></head>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      body {
+      background-color:#0F0F0F;
+      color:white;
+      }
+      
+      h1 {
+      color:white;
+      text-align:center;
+      
+      p {
+      font-family:"Times New Roman";
+      color:white;
+      font-size:20px;
+      }
+    </style>
+  </head>
   
-  <body>
+  <body bgcolor="#000000">
     <center>
-      <h1>WebGLTK</h1>
-      <canvas id="canvas" width="1024" height="768" style="border:1px solid #c3c3c3;">
+      <canvas id="canvas" width="1024" height="768">
 	Your browser does not support the HTML5 canvas tag.
       </canvas>
     </center>
@@ -18,7 +35,12 @@
     <script type="text/javascript" src="js/glmain.js"></script>
 
     <!-- Load shader definitions -->
-    <script type="text/javascript" src="glsl/simple.js"></script>
+    <script type="text/javascript" src="glsl/plainColor.js"></script>
+
+    <!-- mesh data -->
+    <script type="text/javascript" src="js/flower.js"></script>
+    <script type="text/javascript" src="js/leaf.js"></script>
+    <script type="text/javascript" src="js/iso.js"></script>
 
     <!-- Main program -->
     <script type="text/javascript">
@@ -26,6 +48,5 @@
       var gl = WebGLUtils.setupWebGL(canvas);
       glMain();
     </script>
-
   </body>
 </html>

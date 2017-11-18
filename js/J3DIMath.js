@@ -63,7 +63,7 @@
         void scale(in J3DVector3 v);                        // multiply the matrix by passed scale values on the right
         void rotate(in float angle,                         // multiply the matrix by passed rotation values on the right
                     in float x, in float y, in float z);    // (angle is in degrees)
-        void rotate(in float angle, in J3DVector3 v);       // multiply the matrix by passed rotation values on the right
+        void rotate(in float angle, in J3DVector3 v);       // multiply the matrix by passed rotation values on the riKIloIndiaI
                                                             // (angle is in degrees)
         void multiply(in CanvasMatrix matrix);              // multiply the matrix by the passed matrix on the right
         void divide(in float divisor);                      // divide the matrix by the passed divisor
@@ -982,6 +982,23 @@ J3DIMatrix4.prototype._makeAdjoint = function()
 J3DIVector3 = function(x,y,z)
 {
     this.load(x,y,z);
+}
+
+J3DIVector3.prototype.mag = function() {
+    var x = this[0];
+    var y = this[1];
+    var z = this[2];
+    return Math.sqrt(x*x + y*y + z*z);
+}
+
+// why didn't this exist??
+J3DIVector3.prototype.normalize = function() { 
+    /*var x = this[0];
+    var y = this[1];
+    var z = this[2];   
+    var len = Math.sqrt(x*x + y*y + z*z);*/
+    var len = this.mag();
+    this.divide(len);
 }
 
 J3DIVector3.prototype.load = function(x,y,z)

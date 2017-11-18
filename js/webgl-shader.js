@@ -33,18 +33,22 @@ function createShaderProgram(shaderObj) {
     program.enable = function() {
 	gl.useProgram(program);
 	var attribCount = shaderObj.attributes.length;
+	var strideCount = 0;
 	for(var i = 0; i < attribCount; i++) {
 	    attribute = shaderObj.attributes[i];
 	    attribute.location = gl.getAttribLocation(program, attribute.name);
+	    strideCount += attribute.size;
 	    gl.enableVertexAttribArray(attribute.location);
 	}
+	shaderObj.attributes.stride = strideCount;
     }
 
     program.setVertexAttribPointers = function(buffers) {
 	for(var i = 0; i < buffers.length; i++) {
 	    attribute = shaderObj.attributes[i];
+	    stride = shaderObj.attributes.stride;
 	    gl.bindBuffer(gl.ARRAY_BUFFER, buffers[i]);
-	    gl.vertexAttribPointer(attribute.location, attribute.size, getType(attribute.type), false, 0, 0);
+	    gl.vertexAttribPointer(attribute.location, attribute.size, getType(attribute.type), false, stride * 4, attribute.offset * 4);
 	}
     }
 

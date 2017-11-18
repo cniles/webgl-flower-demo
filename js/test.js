@@ -8,7 +8,6 @@ test( "controlTest", function() {
 test( "getLevel()", function() {
     var level = getLevel("./data/notalevel.xml");
     ok(level == null, "unsuccessful load");
-
     level = getLevel("./data/testlevel.xml");
     ok(level != null, "successful load");
     ok(level.geometryCount, "geometry count exists");
@@ -22,7 +21,7 @@ test( "getLevel()", function() {
     ok(geo.colors.length == 9, "geometry colors has correct count: expected 9, found " + geo.colors.length);
     ok(geo.vertices.dimension, "vertices have dimension value");
     ok(geo.vertices.dimension == 2, "vertices have correct dimension value");
-
+    ok(level.getGeometry(0).vertices.getVBO, "vertices has getVBO() method");
 });
 
 test( "test shaders exist", function() {
@@ -34,4 +33,13 @@ test( "test shaders", function() {
     var shader = createShaderProgram(plainColor);
     ok(shader, "shader program created");
     ok(shaderDictionary["plain-color"], "Shader added to dictionary");
+});
+
+test( "test draw", function() {
+    var level = getLevel("./data/testlevel.xml");
+    var vertexBuffer = level.getGeometry(0).vertices.getVBO();
+    ok(vertexBuffer != null, "vertices getVBO() returns not null");
+    var colorBuffer = level.getGeometry(1).vertices.getVBO();
+    ok(colorBuffer != null, "colors getVBO() returns not null");
+    
 });

@@ -11,18 +11,30 @@ function parseNumList(listString) {
     return nums;
 }
 
-function createArrayFromNode(node) {
+function vertexArray(node) {
+    
     var arr = parseNumList(node.childNodes[0].nodeValue);
     arr.dimension = node.getAttribute("r");
+
+    arr.getVBO = getVBO;
+    function getVBO() {
+	var buffer = gl.createBuffer();
+	gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(arr), gl.STATIC_DRAW);
+	return buffer;
+    }
+
     return arr;
 }
 
-function createGeometry(geometryNode) {
-    var geometry = {
-	vertices: createArrayFromNode(geometryNode.getElementsByTagName("vertexList")[0]),
-	colors: createArrayFromNode(geometryNode.getElementsByTagName("colorList")[0])
+function geometry(geometryNode) {
+
+    var geo = {
+	vertices: new vertexArray(geometryNode.getElementsByTagName("vertexList")[0]),
+	colors: new vertexArray(geometryNode.getElementsByTagName("colorList")[0])
     }
-    return geometry;
+
+    return geo;
 }
 
 function getLevel(name) {
@@ -46,7 +58,7 @@ function getLevel(name) {
 	lvl.geometryList = new Array();
 
 	for(var i = 0; i < lvl.geometryCount; ++i) {
-	    var newGeometry = createGeometry(geometryNodeList[i]);
+	    var newGeometry = new geometry(geometryNodeList[i]);
 	    if(newGeometry) lvl.geometryList[i] = newGeometry;
 	}
 	
